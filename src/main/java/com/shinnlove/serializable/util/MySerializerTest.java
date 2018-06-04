@@ -6,6 +6,7 @@ package com.shinnlove.serializable.util;
 
 import com.shinnlove.serializable.MySerializer;
 import com.shinnlove.serializable.impl.DefaultJavaSerializer;
+import com.shinnlove.serializable.impl.XStreamSerializer;
 import com.shinnlove.serializable.model.Student;
 
 /**
@@ -24,16 +25,29 @@ public class MySerializerTest {
 
         // Java默认序列化
         MySerializer defaultJavaSerializer = new DefaultJavaSerializer();
-        byte[] s1Array = defaultJavaSerializer.serialize(s1);
-        byte[] s2Array = defaultJavaSerializer.serialize(s2);
-        System.out.println(s1Array);
-        System.out.println(s2Array);
+        byte[] ds1Array = defaultJavaSerializer.serialize(s1);
+        byte[] ds2Array = defaultJavaSerializer.serialize(s2);
+        System.out.println(ds1Array);
+        System.out.println(ds2Array);
 
         // Java默认反序列化
-        Student as1 = defaultJavaSerializer.deserialize(s1Array, Student.class);
-        Student as2 = defaultJavaSerializer.deserialize(s2Array, Student.class);
-        System.out.println(as1);
-        System.out.println(as2);
+        Student das1 = defaultJavaSerializer.deserialize(ds1Array, Student.class);
+        Student das2 = defaultJavaSerializer.deserialize(ds2Array, Student.class);
+        System.out.println(das1);
+        System.out.println(das2);
+
+        // XML序列化
+        MySerializer xstreamSerializer = new XStreamSerializer();
+        byte[] xs1Array = xstreamSerializer.serialize(s1);
+        byte[] xs2Array = xstreamSerializer.serialize(s2);
+        System.out.println(xs1Array);
+        System.out.println(xs2Array);
+
+        // XML反序列化
+        Student xas1 = defaultJavaSerializer.deserialize(ds1Array, Student.class);
+        Student xas2 = defaultJavaSerializer.deserialize(ds2Array, Student.class);
+        System.out.println(xas1);
+        System.out.println(xas2);
 
     }
 
