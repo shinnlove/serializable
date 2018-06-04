@@ -17,17 +17,19 @@ import com.shinnlove.serializable.model.Student;
 public class MySerializerTest {
 
     public static void main(String[] args) {
+
+        // 序列化模型
         Student s1 = new Student("qianqian", "957047288@qq.com");
         Student s2 = new Student("bianbian", "306086640@qq.com");
 
-        // 序列化
+        // Java默认序列化
         MySerializer defaultJavaSerializer = new DefaultJavaSerializer();
         byte[] s1Array = defaultJavaSerializer.serialize(s1);
         byte[] s2Array = defaultJavaSerializer.serialize(s2);
         System.out.println(s1Array);
         System.out.println(s2Array);
 
-        // 反序列化
+        // Java默认反序列化
         Student as1 = defaultJavaSerializer.deserialize(s1Array, Student.class);
         Student as2 = defaultJavaSerializer.deserialize(s2Array, Student.class);
         System.out.println(as1);
